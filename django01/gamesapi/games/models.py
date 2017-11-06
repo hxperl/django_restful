@@ -24,7 +24,7 @@ class Game(models.Model):
 class Player(models.Model):
     MALE = 'M'
     FEMAIL = 'F'
-    GENDER_CHOICE = (
+    GENDER_CHOICES = (
         (MALE, 'Male'),
         (FEMAIL, 'Female'),
     )

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
+from rest_framework.render import JSONRenderer
 from rest_framework import status
 from games.models import Game
 from games.serializers import GameSerializer

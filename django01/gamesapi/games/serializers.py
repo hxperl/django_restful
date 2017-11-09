@@ -51,7 +51,7 @@ class ScoreSerializer(serializers.HyperlinkedModelSerializer):
 
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
     scores = ScoreSerializer(many=True, read_only=True)
-    gender = serializers.ChoiceField(choice=Player.GENDER_CHOICES)
+    gender = serializers.ChoiceField(choices=Player.GENDER_CHOICES)
     gender_description = serializers.CharField(source='get_gender_display', read_only=True)
 
     class Meta:

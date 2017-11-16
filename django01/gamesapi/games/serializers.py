@@ -3,18 +3,40 @@ from games.models import Game
 from games.models import GameCategory
 from games.models import Player
 from games.models import PlayerScore
+from django.contrib.auth.models import User
+
+class UserGameSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Game
+        fields = (
+            'url',
+            'name'
+        )
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    games = UserGameSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = User
+        fields = (
+            'url',
+            'pk',
+            'username',
+            'games')
 
 class GameSerializer(serializers.HyperlinkedModelSerializer):
-    """
-    게임 id 대신 게임 카테고리 이름을 보여준다.
-    """
+    # 소유자 사용자 이름만 표시 (읽기 전용)
+    owner = serializers.ReadOnlyField(source='owner.username')
+    # 게임 id 대신 게임 카테고리 이름을 보여준다.
     game_category = serializers.SlugRelatedField(queryset=GameCategory.objects.all(), slug_field='name')
     # SlugRelatedField는 고유 슬러그 속성, 즉 디스크립션에 의해 관계 대상을 나타내는 읽기/쓰기 필드
 
     class Meta:
         model = Game
+        depth = 4
         fields = (
             'url',
+            'owner',
             'game_category',
             'name',
             'release_date',

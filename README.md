@@ -21,7 +21,7 @@ django.db.models.Model 서브 클래스 생성
 
 파이썬 프리미티브와 HTTP 요청&응답 사이의 중개자
 
-#####1.4 urlpatterns
+##### 1.4 urlpatterns
 
 url을 뷰에 전달 
 
@@ -33,13 +33,29 @@ url을 뷰에 전달
 
 요청이 text/html을 요청 헤더의 Content-type 키 값으로 지정할 때마다 각 자원에 대해 인간 친화적인 HTML 출력을 생성
 
-#####2.3 rest_framework.serializers.ModelSerializer 클래스
+##### 2.3 rest_framework.serializers.ModelSerializer 클래스
 
 기본 필드 집합과 기본 유효성 검사기 집합을 자동으로 채움
 
 create 및 update 메소드의 기본 구현 제공
 
-#####API view code
+##### 3.1 pagination
+
+rest_framework.pagination.LimitOffsetPagination
+
+##### 3.2 기본 HTTP 인증
+
+rest_framework.authentication.BasicAuthentication 클래스
+
+##### 3.3 세션 인증 
+
+rest_framework.authentication.SessionAuthentication 클래스
+
+##### 3.4 글로벌 인증 클래스 설정 key값
+
+DEFAULT_AUTHENTICATION_CLASSES
+
+##### API view code
 
 ```shell
 games/views.py

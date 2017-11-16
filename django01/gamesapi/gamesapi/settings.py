@@ -86,6 +86,11 @@ DATABASES = {
     }
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS':
+    'games.pagination.LimitOffsetPaginationWithMaxLimit',
+    'PAGE_SIZE': 5
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

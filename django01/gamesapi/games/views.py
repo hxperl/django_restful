@@ -39,13 +39,20 @@ class GameList(generics.ListCreateAPIView):
     serializer_class = GameSerializer
     name = 'game-list'
     def perform_create(self, serializer):
-        # 요청받은 사용자로 소유자를 설정하기 위함
         serializer.save(owner=self.request.user)
+    permission_classes = (
+        permissions.IsAuthenticatedOrReadOnly,
+        IsOwnerOrReadOnly,
+    )
 
 class GameDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Game.objects.all()
     serializer_class = GameSerializer
     name = 'game-detail'
+    permission_classes = (
+        permissions.IsAuthenticatedOrReadOnly,
+        IsOwnerOrReadOnly,
+    )
 
 class PlayerList(generics.ListCreateAPIView):
     queryset = Player.objects.all()

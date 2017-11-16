@@ -8,6 +8,7 @@ from games.serializers import PlayerSerializer
 from games.serializers import PlayerScoreSerializer
 from rest_framework import generics
 from rest_framework.response import Response
+from rest_framework.reverse import reverse
 
 class GameCategoryList(generics.ListCreateAPIView):
     queryset = GameCategory.objects.all()

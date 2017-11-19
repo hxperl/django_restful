@@ -85,7 +85,7 @@ class PlayerTests(APITestCase):
         new_player_gender = Player.MALE
         response = self.create_player(new_player_name, new_player_gender)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.objects.count(), 1)
+        self.assertEqual(Player.objects.count(), 1)
         self.assertEqual(Player.objects.get().name, new_player_name)
 
     def test_create_duplicated_player(self):

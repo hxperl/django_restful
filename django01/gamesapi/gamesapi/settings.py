@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'games.apps.GamesConfig',
     'crispy_forms',
+    'django_nose',
 ]
 
 MIDDLEWARE = [
@@ -110,6 +111,15 @@ REST_FRAMEWORK = {
         'game-categories' : '30/hour',
     }
 }
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-erase',
+    '--cover-inclusive',
+    '--cover-package=games',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

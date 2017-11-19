@@ -43,7 +43,7 @@ class GameCategoryTests(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 1)
-        self.assertEqual(response.data['result'][0]['name'], new_game_category_name)
+        self.assertEqual(response.data['results'][0]['name'], new_game_category_name)
 
     def test_update_game_category(self):
 
@@ -68,4 +68,4 @@ class GameCategoryTests(APITestCase):
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 1)
-        self.assertEqual(response.data['result']['0']['name'], game_category_name1)
+        self.assertEqual(response.data['results']['0']['name'], game_category_name1)
